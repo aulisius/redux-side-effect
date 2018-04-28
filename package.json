@@ -1,5 +1,5 @@
 {
-  "name": "redux-side-effect",
+  "name": "@aulisius/redux-side-effect",
   "version": "0.0.1",
   "description": "Redux Side Effects",
   "main": "lib/redux-side-effect.cjs.js",
