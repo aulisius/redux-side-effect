@@ -1,0 +1,62 @@
+{
+  "name": "redux-side-effect",
+  "version": "0.0.1",
+  "description": "Redux Side Effects",
+  "main": "lib/redux-side-effect.cjs.js",
+  "module": "lib/redux-side-effect.es.js",
+  "scripts": {
+    "build": "rollup -c",
+    "dev": "rollup -c -w",
+    "lint": "eslint src",
+    "lint:fix": "npm run lint -- --fix"
+  },
+  "repository": "aulisius/redux-side-effect",
+  "author": "Md Faizaan",
+  "keywords": [
+    "react",
+    "redux",
+    "side effect",
+    "render props",
+    "react-redux",
+    "symbol"
+  ],
+  "bugs": {
+    "url": "https://github.com/aulisius/redux-side-effect/issues"
+  },
+  "homepage": "https://github.com/aulisius/redux-side-effect",
+  "peerDependencies": {
+    "prop-types": ">= 15.0.0",
+    "react": ">= 16.0.0",
+    "react-dom": ">= 16.0.0",
+    "react-redux": ">= 3",
+    "redux": ">= 3.1.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "7.0.0-beta.46",
+    "@babel/core": "7.0.0-beta.46",
+    "@babel/polyfill": "7.0.0-beta.46",
+    "@babel/preset-env": "7.0.0-beta.46",
+    "@babel/preset-react": "7.0.0-beta.46",
+    "@babel/preset-stage-2": "7.0.0-beta.46",
+    "babel-eslint": "^8.2.3",
+    "eslint": "^4.19.1",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-babel": "^5.1.0",
+    "eslint-plugin-flowtype": "^2.46.3",
+    "eslint-plugin-import": "^2.11.0",
+    "eslint-plugin-prettier": "^2.6.0",
+    "eslint-plugin-promise": "^3.7.0",
+    "eslint-plugin-react": "^7.7.0",
+    "prettier": "^1.12.1",
+    "rollup": "^0.58.2",
+    "rollup-plugin-babel": "^4.0.0-beta.2",
+    "rollup-plugin-commonjs": "^9.1.0"
+  },
+  "dependencies": {},
+  "license": "MIT",
+  "files": [
+    "lib/redux-side-effect.cjs.js",
+    "lib/redux-side-effect.es.js",
+    "README.md"
+  ]
+}
