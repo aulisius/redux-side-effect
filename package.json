@@ -1,6 +1,6 @@
 {
   "name": "redux-side-effect",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "description": "Redux Side Effects",
   "main": "lib/redux-side-effect.cjs.js",
   "module": "lib/redux-side-effect.es.js",
