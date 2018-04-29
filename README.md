@@ -27,7 +27,13 @@ was different from the one I've been working with `redux` and `redux-saga`.
 Hence, my reason for creating this library. Do note that, this library only
 assumes you have `redux` and let's you use any async pattern you currently have.
 
-## [Basic Example](https://codesandbox.io/s/pj31myxkq7)
+## Installation
+
+```bash
+npm install @faizaanceg/redux-side-effect --save
+```
+
+[Basic Example](https://codesandbox.io/s/pj31myxkq7)
 
 ### Basic code snippet
 
@@ -61,9 +67,17 @@ const SideEffectState = {
 The `SideEffect` component can listen to action(s) and monitor the status of the
 async action as and when you dispatch corresponding actions.
 
-### TODO
+## License
+
+MIT
+
+## TODO
 
 * Add complete documentation
 * Add Typescript and Flow definitions
 * Add more non-trivial examples
 * Write tests (and achieve optimum coverage)
+
+## Contributing
+
+PRs are welcome!
