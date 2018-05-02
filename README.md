@@ -33,7 +33,7 @@ assumes you have `redux` and let's you use any async pattern you currently have.
 npm install @faizaanceg/redux-side-effect --save
 ```
 
-[Basic Example](https://codesandbox.io/s/pj31myxkq7)
+[Basic Example](https://codesandbox.io/s/n4om27o3x0)
 
 ### Basic code snippet
 
