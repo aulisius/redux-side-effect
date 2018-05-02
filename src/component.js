@@ -11,7 +11,8 @@ export class SideEffect extends Component {
     sideEffects: object,
     failsOn: string,
     monitors: arrayOf(arrayOf(string)),
-    render: func.isRequired,
+    children: func,
+    render: func,
     dispatch: func.isRequired
   };
 
@@ -65,7 +66,8 @@ export class SideEffect extends Component {
   render() {
     const {
       sideEffects,
-      render,
+      children,
+      render = children,
       startsOn,
       succeedsOn,
       failsOn,
