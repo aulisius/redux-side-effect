@@ -2,7 +2,7 @@
   "name": "@faizaanceg/redux-side-effect",
   "version": "0.1.0",
   "description": "Redux Side Effects",
-  "main": "index.js",
+  "main": "lib/index.js",
   "scripts": {
     "prebuild": "rimraf lib",
     "build": "rollup -c",
