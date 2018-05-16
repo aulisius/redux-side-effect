@@ -2,10 +2,11 @@
   "name": "@faizaanceg/redux-side-effect",
   "version": "0.0.2",
   "description": "Redux Side Effects",
-  "main": "lib/redux-side-effect.cjs.js",
-  "module": "lib/redux-side-effect.es.js",
+  "main": "index.js",
   "scripts": {
+    "prebuild": "rimraf lib",
     "build": "rollup -c",
+    "postbuild": "uglifyjs lib/cjs/side-effect.js -o lib/cjs/side-effect.min.js",
     "dev": "rollup -c -w",
     "lint": "eslint src",
     "lint:fix": "npm run lint -- --fix"
@@ -48,15 +49,17 @@
     "eslint-plugin-promise": "^3.7.0",
     "eslint-plugin-react": "^7.7.0",
     "prettier": "^1.12.1",
+    "rimraf": "^2.6.2",
     "rollup": "^0.58.2",
     "rollup-plugin-babel": "^4.0.0-beta.2",
-    "rollup-plugin-commonjs": "^9.1.0"
+    "rollup-plugin-commonjs": "^9.1.0",
+    "rollup-plugin-copy-assets": "^1.0.0",
+    "uglify-es": "^3.3.9"
   },
   "dependencies": {},
   "license": "MIT",
   "files": [
-    "lib/redux-side-effect.cjs.js",
-    "lib/redux-side-effect.es.js",
+    "lib/",
     "README.md"
   ]
 }
