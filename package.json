@@ -1,6 +1,6 @@
 {
   "name": "@faizaanceg/redux-side-effect",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "Redux Side Effects",
   "main": "index.js",
   "scripts": {
