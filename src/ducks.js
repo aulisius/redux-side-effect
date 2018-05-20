@@ -52,7 +52,11 @@ export const sideEffectMiddleware = reducerKey => store => next => action => {
   const result = next(action);
   const state = store.getState()[reducerKey];
   state.listeningTo
-    .filter(listenAction => listenAction.actionType === action.type)
+    .filter(
+      listenAction =>
+        listenAction.actionType === action.type &&
+        listenAction.shouldUpdate(action)
+    )
     .forEach(listenAction =>
       store.dispatch(actions.updateSideEffect(listenAction, action))
     );
@@ -62,7 +66,8 @@ export const sideEffectMiddleware = reducerKey => store => next => action => {
 export const sideEffectReducer = (state = initialState, action) => {
   switch (action.type) {
     case actionTypes.START_LISTENING: {
-      const { monitor = [], key } = action;
+      //TODO: Make filters work *properly* with multiple monitors
+      const { monitor = [], key, shouldUpdate } = action;
       const [
         startsOn,
         succeedsOn = onSuccess(startsOn),
@@ -75,16 +80,19 @@ export const sideEffectReducer = (state = initialState, action) => {
           {
             sideEffect: Effect.START,
             actionType: startsOn,
+            shouldUpdate,
             key
           },
           {
             sideEffect: Effect.SUCCESS,
             actionType: succeedsOn,
+            shouldUpdate,
             key
           },
           {
             sideEffect: Effect.FAILURE,
             actionType: failsOn,
+            shouldUpdate,
             key
           }
         ],

@@ -9,6 +9,7 @@ export class SideEffect extends Component {
     startsOn: string,
     succeedsOn: string,
     sideEffects: object,
+    shouldUpdate: func,
     failsOn: string,
     monitors: arrayOf(arrayOf(string)),
     children: func,
@@ -44,6 +45,7 @@ export class SideEffect extends Component {
       startsOn,
       succeedsOn,
       failsOn,
+      shouldUpdate = _ => true,
       monitors = [[startsOn, succeedsOn, failsOn]]
     } = this.props;
     monitors.forEach(monitor => {
@@ -52,6 +54,7 @@ export class SideEffect extends Component {
       this.props.dispatch(
         actions.listen({
           monitor,
+          shouldUpdate,
           key
         })
       );
