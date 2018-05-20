@@ -7,17 +7,18 @@ export const actionTypes = {
   UPDATE_SIDE_EFFECT: "[Redux Side Effect] Update"
 };
 
-const SideEffect = {
-  NONE: "none",
+export const Effect = {
+  READY: "ready",
   START: "start",
   SUCCESS: "success",
   FAILURE: "failure"
 };
 
 export const sideEffectInitialState = {
-  state: SideEffect.NONE,
+  state: Effect.READY,
   isFetching: false,
-  errors: null
+  errors: null,
+  originalAction: {}
 };
 
 const initialState = {
@@ -72,17 +73,17 @@ export const sideEffectReducer = (state = initialState, action) => {
         listeningTo: [
           ...state.listeningTo,
           {
-            sideEffect: SideEffect.START,
+            sideEffect: Effect.START,
             actionType: startsOn,
             key
           },
           {
-            sideEffect: SideEffect.SUCCESS,
+            sideEffect: Effect.SUCCESS,
             actionType: succeedsOn,
             key
           },
           {
-            sideEffect: SideEffect.FAILURE,
+            sideEffect: Effect.FAILURE,
             actionType: failsOn,
             key
           }
@@ -119,7 +120,7 @@ export const sideEffectReducer = (state = initialState, action) => {
           ...state.sideEffects,
           [action.key]: {
             state: sideEffect,
-            isFetching: sideEffect === "start",
+            isFetching: sideEffect === Effect.START,
             errors: originalAction.errors || originalAction.error,
             originalAction
           }

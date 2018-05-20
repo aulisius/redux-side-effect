@@ -2,7 +2,7 @@ import { connect } from "react-redux";
 
 export { onSuccess, onFailure } from "./utils";
 
-export { sideEffectReducer, sideEffectMiddleware } from "./ducks";
+export { sideEffectReducer, sideEffectMiddleware, Effect } from "./ducks";
 
 export { SideEffect } from "./component";
 
