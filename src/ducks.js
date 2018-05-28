@@ -17,8 +17,7 @@ export const Effect = {
 export const sideEffectInitialState = {
   state: Effect.READY,
   isFetching: false,
-  errors: null,
-  originalAction: {}
+  errors: null
 };
 
 const initialState = {

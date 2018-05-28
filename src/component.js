@@ -23,21 +23,25 @@ export class SideEffect extends Component {
     const { sideEffects: nextSideEffects } = nextProps;
     const {
       startsOn,
-      succeedsOn = onSuccess(startsOn),
-      failsOn = onFailure(startsOn),
+      succeedsOn,
+      failsOn,
       monitors = [[startsOn, succeedsOn, failsOn]]
     } = this.props;
-    return monitors.some((monitor, index) => {
-      const { originalAction } = nextSideEffects[this.keys[index]] || {};
-      const [
-        startsOn,
-        succeedsOn = onSuccess(startsOn),
-        failsOn = onFailure(startsOn)
-      ] = monitor;
-      return !originalAction
-        ? true
-        : [startsOn, succeedsOn, failsOn].includes(originalAction.type);
-    });
+    return monitors.some(
+      (
+        [
+          startsOn,
+          succeedsOn = onSuccess(startsOn),
+          failsOn = onFailure(startsOn)
+        ],
+        i
+      ) => {
+        const { originalAction } = nextSideEffects[this.keys[index]] || {};
+        return !originalAction
+          ? true
+          : [startsOn, succeedsOn, failsOn].includes(originalAction.type);
+      }
+    );
   }
 
   componentDidMount() {
@@ -72,15 +76,12 @@ export class SideEffect extends Component {
       children,
       render = children,
       startsOn,
-      succeedsOn,
-      failsOn,
-      monitors = [[startsOn, succeedsOn, failsOn]]
+      monitors = [[startsOn]]
     } = this.props;
     return (
       render(
         ...monitors.map(
-          (monitor, index) =>
-            sideEffects[this.keys[index]] || sideEffectInitialState
+          (_, i) => sideEffects[this.keys[i]] || sideEffectInitialState
         )
       ) || null
     );
