@@ -44,7 +44,7 @@ const createESBuild = _ => {
     }),
     commonjs(),
     copy({
-      assets: ["./index.cjs.js", "./index.es.js"]
+      assets: ["./index.cjs.js"]
     })
   ];
   let filename = "lib/es/side-effect.js";

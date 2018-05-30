@@ -3,7 +3,7 @@
   "version": "0.3.1",
   "description": "Redux Side Effects",
   "main": "lib/index.cjs.js",
-  "module": "lib/index.es.js",
+  "module": "lib/es/side-effect.js",
   "scripts": {
     "prebuild": "rimraf lib",
     "build": "rollup -c",
