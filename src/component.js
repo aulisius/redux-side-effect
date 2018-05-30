@@ -36,7 +36,7 @@ export class SideEffect extends Component {
         ],
         i
       ) => {
-        const { originalAction } = nextSideEffects[this.keys[index]] || {};
+        const { originalAction } = nextSideEffects[this.keys[i]] || {};
         return !originalAction
           ? true
           : [startsOn, succeedsOn, failsOn].includes(originalAction.type);
