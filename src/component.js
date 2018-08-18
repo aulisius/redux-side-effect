@@ -1,25 +1,15 @@
+import PropTypes from "prop-types";
 import { Component } from "react";
-import { func, string, object, arrayOf } from "prop-types";
-
 import { actions, sideEffectInitialState } from "./ducks";
-import { onSuccess, onFailure } from "./utils";
+import { onFailure, onSuccess } from "./utils";
 
 export class SideEffect extends Component {
-  static propTypes = {
-    startsOn: string,
-    succeedsOn: string,
-    sideEffects: object,
-    shouldUpdate: func,
-    failsOn: string,
-    monitors: arrayOf(arrayOf(string)),
-    children: func,
-    render: func,
-    dispatch: func.isRequired
-  };
+  constructor(props) {
+    super(props);
+    this.keys = [];
+  }
 
-  keys = [];
-
-  shouldComponentUpdate(nextProps, nextState) {
+  shouldComponentUpdate(nextProps) {
     const { sideEffects: nextSideEffects } = nextProps;
     const {
       startsOn,
@@ -87,3 +77,27 @@ export class SideEffect extends Component {
     );
   }
 }
+
+SideEffect.propTypes = {
+  startsOn: PropTypes.string,
+  succeedsOn: PropTypes.string,
+  sideEffects: PropTypes.object,
+  shouldUpdate: PropTypes.func,
+  failsOn: PropTypes.string,
+  monitors: PropTypes.arrayOf(PropTypes.arrayOf(PropTypes.string)),
+  children: PropTypes.func,
+  render: PropTypes.func,
+  dispatch: PropTypes.func.isRequired
+};
+
+SideEffect.defaultProps = {
+  startsOn: "",
+  succeedsOn: "",
+  failsOn: "",
+  sideEffects: {},
+  shouldUpdate: _ => {},
+  monitors: undefined,
+  children: _ => {},
+  render: undefined,
+  dispatch: _ => {}
+};

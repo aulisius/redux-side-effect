@@ -1,2 +1,2 @@
-export const onSuccess = actionType => `${actionType} Success`;
-export const onFailure = actionType => `${actionType} Failure`;
+export const onSuccess = _ => `${_} Success`;
+export const onFailure = _ => `${_} Failure`;

@@ -1,4 +1,4 @@
-import { onSuccess, onFailure } from "./utils";
+import { onFailure, onSuccess } from "./utils";
 
 export const actionTypes = {
   START_LISTENING: "[Redux Side Effect] Mounted",
@@ -103,18 +103,13 @@ export const sideEffectReducer = (state = initialState, action) => {
     }
 
     case actionTypes.STOP_LISTENING: {
-      const newListeningTo = state.listeningTo.filter(
-        listenAction => listenAction.key !== action.key
-      );
-
-      const {
-        [action.key]: monitorToBeRemoved,
-        ...sideEffects
-      } = state.sideEffects;
+      const { [action.key]: _, ...sideEffects } = state.sideEffects;
 
       return {
         ...state,
-        listeningTo: newListeningTo,
+        listeningTo: state.listeningTo.filter(
+          listenAction => listenAction.key !== action.key
+        ),
         sideEffects
       };
     }
