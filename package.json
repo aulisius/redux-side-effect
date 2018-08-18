@@ -2,8 +2,8 @@
   "name": "@faizaanceg/redux-side-effect",
   "version": "0.3.2",
   "description": "Redux Side Effects",
-  "main": "lib/index.cjs.js",
-  "module": "lib/es/side-effect.js",
+  "main": "lib/cjs.js",
+  "module": "lib/es.js",
   "scripts": {
     "prebuild": "rimraf lib",
     "build": "rollup -c",
@@ -13,7 +13,7 @@
     "lint:fix": "npm run lint -- --fix"
   },
   "repository": "aulisius/redux-side-effect",
-  "author": "Md Faizaan",
+  "author": "Md Faizaan <aulisius7@gmail.com> (https://aulisi.us)",
   "keywords": [
     "react",
     "redux",
@@ -56,6 +56,8 @@
     "rollup-plugin-copy-assets": "^1.0.0",
     "rollup-plugin-filesize": "^4.0.1"
   },
+  "config": {
+    "source": "src/index.js"
   },
   "dependencies": {},
   "license": "MIT",
