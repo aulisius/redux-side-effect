@@ -39,7 +39,7 @@ export class SideEffect extends Component {
       startsOn,
       succeedsOn,
       failsOn,
-      shouldUpdate = _ => true,
+      shouldUpdate,
       monitors = [[startsOn, succeedsOn, failsOn]]
     } = this.props;
     monitors.forEach(monitor => {
@@ -95,7 +95,7 @@ SideEffect.defaultProps = {
   succeedsOn: "",
   failsOn: "",
   sideEffects: {},
-  shouldUpdate: _ => {},
+  shouldUpdate: _ => true,
   monitors: undefined,
   children: _ => {},
   render: undefined,

@@ -40,9 +40,9 @@ export const actions = {
   },
   updateSideEffect(actionProps, originalAction) {
     return {
-      type: actionTypes.UPDATE_SIDE_EFFECT,
       ...actionProps,
-      originalAction
+      originalAction,
+      type: actionTypes.UPDATE_SIDE_EFFECT
     };
   }
 };
