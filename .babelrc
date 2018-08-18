@@ -3,14 +3,16 @@
     [
       "@babel/preset-env",
       {
+        "loose": true,
         "modules": false
       }
-    ],
-    "@babel/preset-react",
+    ]
+  ],
+  "plugins": [
     [
-      "@babel/preset-stage-2",
+      "transform-react-remove-prop-types",
       {
-        "decoratorsLegacy": true
+        "mode": "unsafe-wrap"
       }
     ]
   ]
