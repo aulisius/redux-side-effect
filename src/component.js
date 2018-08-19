@@ -91,13 +91,7 @@ SideEffect.propTypes = {
 };
 
 SideEffect.defaultProps = {
-  startsOn: "",
-  succeedsOn: "",
-  failsOn: "",
   sideEffects: {},
   shouldUpdate: _ => true,
-  monitors: undefined,
-  children: _ => {},
-  render: undefined,
-  dispatch: _ => {}
+  children: _ => null
 };

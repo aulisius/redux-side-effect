@@ -1,10 +1,10 @@
 import { onFailure, onSuccess } from "./utils";
 
 export const actionTypes = {
-  START_LISTENING: "[Redux Side Effect] Mounted",
-  STOP_LISTENING: "[Redux Side Effect] Unmounting",
+  START_LISTENING: "[Side Effect] Mounted",
+  STOP_LISTENING: "[Side Effect] Unmounting",
 
-  UPDATE_SIDE_EFFECT: "[Redux Side Effect] Update"
+  UPDATE_SIDE_EFFECT: "[Side Effect] Update"
 };
 
 export const Effect = {
@@ -49,6 +49,9 @@ export const actions = {
 
 export const sideEffectMiddleware = reducerKey => store => next => action => {
   const result = next(action);
+  if (action.type.startsWith("[Side Effect]")) {
+    return result;
+  }
   const state = store.getState()[reducerKey];
   state.listeningTo
     .filter(
