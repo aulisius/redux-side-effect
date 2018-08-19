@@ -44,7 +44,15 @@ npm install @faizaanceg/redux-side-effect --save
 
 ## Examples
 
-- [Basic Example](https://codesandbox.io/s/n4om27o3x0)
+You can check out the `examples` directory. To run any of them, follow these steps.
+
+- `git clone <this-repo>`
+- `cd <this-repo>`
+- `npm install && npm build`
+- `cd examples/<any-example>`
+- `npm install && npm start`
+
+For an interactive example, you can check out an example made with `CodeSandbox` [here](https://codesandbox.io/s/n4om27o3x0).
 
 ## Basic code snippet
 
@@ -55,7 +63,7 @@ npm install @faizaanceg/redux-side-effect --save
   failsOn={actionTypes.GET_DATA_FAILURE}
   render={({ state, errors }) => (
     <>
-      {state === Effect.NONE && "No action has started yet"}
+      {state === Effect.READY && "No action has started yet"}
       {state === Effect.START && "Loading user info"}
       {state === Effect.SUCCESS && "Successfully loaded information"}
       {state === Effect.FAILURE && errors.message}
@@ -68,7 +76,7 @@ A side effect has the following states:
 
 ```js
 const Effect = {
-  NONE: "none",
+  READY: "ready",
   START: "start",
   SUCCESS: "success",
   FAILURE: "failure"
