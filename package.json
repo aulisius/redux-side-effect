@@ -4,6 +4,7 @@
   "description": "Redux Side Effects",
   "main": "lib/cjs.js",
   "module": "lib/es.js",
+  "source": "src/index.js",
   "scripts": {
     "prebuild": "rimraf lib",
     "build": "rollup -c",
@@ -54,9 +55,6 @@
     "rollup-plugin-babel": "^4.0.0-beta.8",
     "rollup-plugin-commonjs": "^9.1.5",
     "rollup-plugin-filesize": "^4.0.1"
-  },
-  "config": {
-    "source": "src/index.js"
   },
   "dependencies": {},
   "license": "MIT",

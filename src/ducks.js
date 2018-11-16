@@ -1,13 +1,12 @@
 import { onFailure, onSuccess } from "./utils";
 
 export const actionTypes = {
-  START_LISTENING: "[Side Effect] Mounted",
-  STOP_LISTENING: "[Side Effect] Unmounting",
-
-  UPDATE_SIDE_EFFECT: "[Side Effect] Update"
+  START: "[Side Effect] Start",
+  STOP: "[Side Effect] Stop",
+  UPDATE: "[Side Effect] Update"
 };
 
-export const Effect = {
+export const EffectType = {
   READY: "ready",
   START: "start",
   SUCCESS: "success",
@@ -15,7 +14,7 @@ export const Effect = {
 };
 
 export const sideEffectInitialState = {
-  state: Effect.READY,
+  state: EffectType.READY,
   isFetching: false,
   errors: null
 };
@@ -28,13 +27,13 @@ const initialState = {
 export const actions = {
   listen(actionProps) {
     return {
-      type: actionTypes.START_LISTENING,
+      type: actionTypes.START,
       ...actionProps
     };
   },
   unlisten(key) {
     return {
-      type: actionTypes.STOP_LISTENING,
+      type: actionTypes.STOP,
       key
     };
   },
@@ -42,7 +41,7 @@ export const actions = {
     return {
       ...actionProps,
       originalAction,
-      type: actionTypes.UPDATE_SIDE_EFFECT
+      type: actionTypes.UPDATE
     };
   }
 };
@@ -67,7 +66,7 @@ export const sideEffectMiddleware = reducerKey => store => next => action => {
 
 export const sideEffectReducer = (state = initialState, action) => {
   switch (action.type) {
-    case actionTypes.START_LISTENING: {
+    case actionTypes.START: {
       //TODO: Make filters work *properly* with multiple monitors
       const { monitor = [], key, shouldUpdate } = action;
       const [
@@ -75,24 +74,28 @@ export const sideEffectReducer = (state = initialState, action) => {
         succeedsOn = onSuccess(startsOn),
         failsOn = onFailure(startsOn)
       ] = monitor;
+      if (typeof startsOn === "undefined") {
+        console.warn("Invalid action type");
+        return state;
+      }
       return {
         ...state,
         listeningTo: [
           ...state.listeningTo,
           {
-            sideEffect: Effect.START,
+            sideEffect: EffectType.START,
             actionType: startsOn,
             shouldUpdate,
             key
           },
           {
-            sideEffect: Effect.SUCCESS,
+            sideEffect: EffectType.SUCCESS,
             actionType: succeedsOn,
             shouldUpdate,
             key
           },
           {
-            sideEffect: Effect.FAILURE,
+            sideEffect: EffectType.FAILURE,
             actionType: failsOn,
             shouldUpdate,
             key
@@ -105,7 +108,7 @@ export const sideEffectReducer = (state = initialState, action) => {
       };
     }
 
-    case actionTypes.STOP_LISTENING: {
+    case actionTypes.STOP: {
       const { [action.key]: _, ...sideEffects } = state.sideEffects;
 
       return {
@@ -117,7 +120,7 @@ export const sideEffectReducer = (state = initialState, action) => {
       };
     }
 
-    case actionTypes.UPDATE_SIDE_EFFECT:
+    case actionTypes.UPDATE:
       const { sideEffect, originalAction } = action;
       return {
         ...state,
@@ -125,8 +128,8 @@ export const sideEffectReducer = (state = initialState, action) => {
           ...state.sideEffects,
           [action.key]: {
             state: sideEffect,
-            isFetching: sideEffect === Effect.START,
-            errors: originalAction.errors || originalAction.error,
+            isFetching: sideEffect === EffectType.START,
+            errors: originalAction.error,
             originalAction
           }
         }

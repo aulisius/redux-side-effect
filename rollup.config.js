@@ -1,29 +1,12 @@
 import babel from "rollup-plugin-babel";
-import commonjs from "rollup-plugin-commonjs";
 import filesize from "rollup-plugin-filesize";
 import pkg from "./package.json";
 
 let createBuild = ({ format }) => ({
-  input: pkg.config.source,
+  input: pkg.source,
   external: Object.keys(pkg.peerDependencies),
-  output: {
-    file: `lib/${format}.js`,
-    format
-  },
-  plugins: [
-    babel({
-      exclude: "node_modules/**"
-    }),
-    commonjs(),
-    filesize()
-  ]
+  output: { file: `lib/${format}.js`, format },
+  plugins: [babel({ exclude: "node_modules/**" }), filesize()]
 });
 
-export default [
-  createBuild({
-    format: "cjs"
-  }),
-  createBuild({
-    format: "es"
-  })
-];
+export default [createBuild({ format: "cjs" }), createBuild({ format: "es" })];
