@@ -9,31 +9,6 @@ export class SideEffect extends Component {
     this.keys = [];
   }
 
-  shouldComponentUpdate(nextProps) {
-    const { sideEffects: nextSideEffects } = nextProps;
-    const {
-      startsOn,
-      succeedsOn,
-      failsOn,
-      monitors = [[startsOn, succeedsOn, failsOn]]
-    } = this.props;
-    return monitors.some(
-      (
-        [
-          startsOn,
-          succeedsOn = onSuccess(startsOn),
-          failsOn = onFailure(startsOn)
-        ],
-        i
-      ) => {
-        const { originalAction } = nextSideEffects[this.keys[i]] || {};
-        return !originalAction
-          ? true
-          : [startsOn, succeedsOn, failsOn].includes(originalAction.type);
-      }
-    );
-  }
-
   componentDidMount() {
     const {
       startsOn,
