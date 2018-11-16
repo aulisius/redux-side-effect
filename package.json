@@ -1,6 +1,6 @@
 {
   "name": "@faizaanceg/redux-side-effect",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "description": "Redux Side Effects",
   "main": "lib/cjs.js",
   "module": "lib/es.js",
