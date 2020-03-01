@@ -47,7 +47,7 @@ class GithubUser extends Component {
               )}
             />
             {isFetching && "Loading user info"}
-            {state === Effect.SUCCESS && user.name}
+            {state === Effect.SUCCESS && <div>{user.name}</div>}
             {state === Effect.FAILURE && errors.message}
           </Fragment>
         )}

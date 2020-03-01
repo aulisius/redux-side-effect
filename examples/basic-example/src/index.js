@@ -18,11 +18,14 @@ const mainReducer = combineReducers({
   sideEffect: sideEffectReducer
 });
 
+let _compose = compose;
+_compose = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__;
+
 const createAppStore = (initialState = {}) =>
   createStore(
     mainReducer,
     initialState,
-    compose(applyMiddleware(...middleware))
+    _compose(applyMiddleware(...middleware))
   );
 
 const store = createAppStore({});
