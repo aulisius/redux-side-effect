@@ -1,6 +1,6 @@
 import {
   sideEffectMiddleware,
-  sideEffectReducer
+  sideEffectFactory
 } from "@faizaanceg/redux-side-effect";
 import React from "react";
 import { render } from "react-dom";
@@ -11,11 +11,11 @@ import thunk from "redux-thunk";
 import GithubUser from "./github-user";
 import { githubReducer } from "./github-user/ducks";
 
-const middleware = [thunk, sideEffectMiddleware("sideEffect"), Logger];
+const middleware = [thunk, sideEffectMiddleware, Logger];
 
 const mainReducer = combineReducers({
   github: githubReducer,
-  sideEffect: sideEffectReducer
+  ...sideEffectFactory()
 });
 
 let _compose = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;

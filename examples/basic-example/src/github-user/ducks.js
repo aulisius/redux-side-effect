@@ -36,14 +36,16 @@ export const actions = {
     dispatch(actions.getUser());
     const { username } = payload;
     const fetchUrl = `https://api.github.com/users/${username}`;
-    fetch(fetchUrl)
-      .then(res => res.json())
-      .then(user => {
-        if (!user.login) {
-          throw new Error("Not found");
-        }
-        dispatch(actions.getUserSuccess(user));
-      })
-      .catch(error => dispatch(actions.getUserFailure(error)));
+    setTimeout(() => {
+      fetch(fetchUrl)
+        .then(res => res.json())
+        .then(user => {
+          if (!user.login) {
+            throw new Error("Not found");
+          }
+          dispatch(actions.getUserSuccess(user));
+        })
+        .catch(error => dispatch(actions.getUserFailure(error)));
+    }, 5000);
   }
 };
