@@ -1,4 +1,3 @@
-export * from "./component";
-export * from "./connect-wrapper";
-export { EffectType, sideEffectMiddleware, sideEffectReducer } from "./ducks";
+export * from "./useSideEffect";
+export { EffectType, sideEffectFactory, sideEffectMiddleware } from "./ducks";
 export * from "./utils";
