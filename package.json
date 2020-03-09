@@ -3,7 +3,7 @@
   "version": "0.6.0",
   "description": "Redux Side Effects",
   "main": "lib/cjs.js",
-  "module": "lib/es.js",
+  "module": "lib/esm.js",
   "source": "src/index.js",
   "scripts": {
     "prebuild": "rimraf lib",
@@ -21,40 +21,48 @@
     "side effect",
     "render props",
     "react-redux",
-    "symbol"
+    "symbol",
+    "hooks"
   ],
   "bugs": {
     "url": "https://github.com/aulisius/redux-side-effect/issues"
   },
   "homepage": "https://github.com/aulisius/redux-side-effect",
   "peerDependencies": {
-    "prop-types": ">= 15.0.0",
-    "react": ">= 16.0.0",
-    "react-dom": ">= 16.0.0",
-    "react-redux": ">= 3",
+    "react": ">= 16.8.0",
+    "react-dom": ">= 16.8.0",
+    "react-redux": ">= 7.1.0",
     "redux": ">= 3.1.0"
   },
   "devDependencies": {
-    "@babel/cli": "7.0.0-rc.1",
-    "@babel/core": "7.0.0-rc.1",
-    "@babel/polyfill": "7.0.0-rc.1",
-    "@babel/preset-env": "7.0.0-rc.1",
-    "babel-eslint": "^8.2.6",
-    "babel-plugin-transform-react-remove-prop-types": "^0.4.14",
-    "eslint": "^5.3.0",
-    "eslint-config-prettier": "^3.0.1",
-    "eslint-plugin-babel": "^5.1.0",
-    "eslint-plugin-flowtype": "^2.50.0",
-    "eslint-plugin-import": "^2.14.0",
-    "eslint-plugin-prettier": "^2.6.2",
-    "eslint-plugin-promise": "^3.8.0",
-    "eslint-plugin-react": "^7.11.1",
-    "prettier": "^1.14.2",
-    "rimraf": "^2.6.2",
-    "rollup": "^0.64.1",
-    "rollup-plugin-babel": "^4.0.0-beta.8",
-    "rollup-plugin-commonjs": "^9.1.5",
-    "rollup-plugin-filesize": "^4.0.1"
+    "@babel/cli": "7.8.4",
+    "@babel/core": "7.8.7",
+    "@babel/polyfill": "7.8.7",
+    "@babel/preset-env": "7.8.7",
+    "@rollup/plugin-commonjs": "^11.0.2",
+    "babel-eslint": "^10.1.0",
+    "babel-plugin-transform-react-remove-prop-types": "^0.4.24",
+    "eslint": "^6.8.0",
+    "eslint-config-prettier": "^6.10.0",
+    "eslint-config-react-app": "^5.2.0",
+    "eslint-plugin-babel": "^5.3.0",
+    "eslint-plugin-flowtype": "^4.6.0",
+    "eslint-plugin-jsx-a11y": "^6.2.3",
+    "eslint-plugin-prettier": "^3.1.2",
+    "eslint-plugin-promise": "^4.2.1",
+    "eslint-plugin-react-hooks": "2.5.0",
+    "prettier": "^1.19.1",
+    "rimraf": "^3.0.2",
+    "rollup": "^2.0.2",
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-filesize": "^6.2.1"
+  },
+  "browserslist": {
+    "production": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
   },
   "dependencies": {},
   "license": "MIT",

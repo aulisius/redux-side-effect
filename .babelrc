@@ -4,8 +4,9 @@
       "@babel/preset-env",
       {
         "loose": true,
-        "useBuiltIns": "false",
-        "modules": false
+        "useBuiltIns": "entry",
+        "modules": false,
+        "corejs": 3
       }
     ]
   ],
